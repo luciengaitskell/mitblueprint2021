@@ -6,6 +6,8 @@ import './Popup.css';
 import FactBox from '../../containers/FactBox';
 import FactContainer from '../../containers/FactContainer';
 
+import ComparisonPlot from '../../datavis/ComparisonPlot';
+
 const Popup = () => {
   return (
     <div className="App">
@@ -18,9 +20,8 @@ const Popup = () => {
           <FactBox gridArea={'info21'}>10% litness</FactBox>
           <FactBox gridArea={'info22'}>10% litness</FactBox>
           <FactBox gridArea={'info23'}>10% litness</FactBox>
-
           <button
-            className={'Info-expand'}
+            className="Info-expand"
             onClick={() => {
               chrome.tabs.create({
                 url: chrome.runtime.getURL('dashboard.html'),
@@ -29,6 +30,11 @@ const Popup = () => {
           >
             Gimme info bro
           </button>
+          <ComparisonPlot
+            width={460}
+            height={180}
+            className="Comparison-plot"
+          />
         </FactContainer>
       </header>
     </div>
