@@ -1,0 +1,26 @@
+.DashData {
+  display: grid;
+  width: 100vw;
+  grid-template-columns: 20% 100px auto;
+  grid-template-rows: max-content auto;
+  column-gap: 10px;
+  row-gap: 5px;
+  grid-template-areas:
+    'name name text'
+    'selector graph graph';
+  align-items: start;
+}
+
+#Univ-name {
+  grid-area: name;
+  font-size: calc(4px + 2vw);
+}
+
+#Univ-text {
+  grid-area: text;
+  font-size: calc(10px + 0.5vw);
+}
+
+.Univ-graph {
+  grid-area: graph;
+}

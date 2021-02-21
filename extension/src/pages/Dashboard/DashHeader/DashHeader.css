@@ -7,5 +7,6 @@
 .logo {
   flex: 1;
   padding: 10px;
-  font-size: 32px;
+  /*font-size: 32px;*/
+  font-size: calc(10px + 2vmin);
 }

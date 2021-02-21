@@ -4,15 +4,15 @@ import './Dashboard.css';
 import './Dashboard.scss';
 
 import DashHeader from './DashHeader';
+import DashData from './DashData';
 
 const Dashboard = () => {
   return (
     <div className="App">
       <DashHeader />
-      <header className="App-header">
-        <h1>Hehe Dashboard will be here dude</h1>
-        <h6>The color of this paragraph is defined using SASS.</h6>
-      </header>
+      <div className="App-container">
+        <DashData />
+      </div>
     </div>
   );
 };
