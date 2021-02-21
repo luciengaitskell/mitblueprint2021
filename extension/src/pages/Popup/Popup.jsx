@@ -19,6 +19,15 @@ const Popup = () => {
         >
           Learn React
         </a>
+        <button
+          onClick={() => {
+            chrome.tabs.create({
+              url: chrome.runtime.getURL('dashboard.html'),
+            });
+          }}
+        >
+          AYY Lmao
+        </button>
       </header>
     </div>
   );
