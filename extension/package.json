@@ -1,11 +1,11 @@
 {
-  "name": "chrome-extension-boilerplate-react",
-  "version": "3.2.1",
-  "description": "A chrome extension boilerplate built with React 17 and Webpack 5",
+  "name": "univis",
+  "version": "0.0.9",
+  "description": "Univis is a chrome extension that allows the user to quickly see information about the college which emailed them, like ACT scores, acceptance rates, student-faculty ratio and more!",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lxieyang/chrome-extension-boilerplate-react.git"
+    "url": "https://github.com/luciengaitskell/mitblueprint2021.git"
   },
   "scripts": {
     "build": "node utils/build.js",
