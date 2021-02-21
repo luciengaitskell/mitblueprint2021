@@ -9,17 +9,25 @@ import FactContainer from '../../containers/FactContainer';
 import ComparisonPlot from '../../datavis/ComparisonPlot';
 
 const Popup = () => {
+  let admitrate = "..."
+  let sfratio = "..."
+  let state = "US"
+  let act = "..."
+  let price = "..."
+  let percaid = "..."
+
+
   return (
     <div className="App">
       <header className="App-header">
         <FactContainer>
           <h3 className="University-title">Some selected college</h3>
-          <FactBox gridArea={'info11'}>10% litness</FactBox>
-          <FactBox gridArea={'info12'}>10% litness</FactBox>
-          <FactBox gridArea={'info13'}>10% litness</FactBox>
-          <FactBox gridArea={'info21'}>10% litness</FactBox>
-          <FactBox gridArea={'info22'}>10% litness</FactBox>
-          <FactBox gridArea={'info23'}>10% litness</FactBox>
+          <FactBox gridArea={'info11'}>{admitrate}&percnt;</FactBox>
+          <FactBox gridArea={'info12'}>{sfratio} student-to-faculty</FactBox>
+          <FactBox gridArea={'info13'}>{state}</FactBox>
+          <FactBox gridArea={'info21'}>{act} ACT</FactBox>
+          <FactBox gridArea={'info22'}>&#36;{price}</FactBox>
+          <FactBox gridArea={'info23'}>&#36;{percaid}</FactBox>
           <button
             className="Info-expand"
             onClick={() => {
