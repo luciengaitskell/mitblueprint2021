@@ -43,3 +43,15 @@
     transform: rotate(360deg);
   }
 }
+
+.University-title {
+  grid-area: title;
+  justify-self: center;
+  font-weight: bold;
+}
+
+.Info-expand {
+  margin-top: 10px;
+  grid-area: button;
+  justify-self: center;
+}
