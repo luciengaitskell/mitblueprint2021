@@ -9,24 +9,22 @@ import FactContainer from '../../containers/FactContainer';
 import ComparisonPlot from '../../datavis/ComparisonPlot';
 
 import { getData } from './Dataload.js';
-import { fullData } from '../../data/csvload.js'
+import { fullData } from '../../data/csvload.js';
 
 const Popup = () => {
-  const [univData, setUnivData] = useState({});
-
-  setUnivData({
-    admitrate : "...",
-  sfratio : "...",
-  state : "US",
-  act : "...",
-  price : "...",
-  percaid : "...",
-  })
-  
+  const [univData, setUnivData] = useState({
+    name: '...',
+    admitrate: '...',
+    sfratio: '...',
+    state: 'US',
+    act: '...',
+    price: '...',
+    percaid: '...',
+  });
 
   useEffect(() => {
     getData((emailInfo) => {
-      let univName = "";
+      var univName = '';
       switch (emailInfo.email) {
         case 'collegeadmissions@uchicago.edu':
           univName = 'University of Chicago';
@@ -38,26 +36,32 @@ const Popup = () => {
           univName = 'Massachusetts Institute of Technology';
           break;
       }
+      console.log(univName);
 
-      getData((data) => {
-        setUnivData(data[univName]);
-      })
+      fullData((data) => {
+        console.log(data);
+        let univData = data[univName];
+        univData['name'] = univName;
+        setUnivData(univData);
+      });
     });
   }, []);
-
-  console.log(univName);
 
   return (
     <div className="App">
       <header className="App-header">
         <FactContainer>
-          <h3 className="University-title">Some selected college</h3>
-          <FactBox gridArea={'info11'}>{univData.admitrate}&percnt;</FactBox>
-          <FactBox gridArea={'info12'}>{univData.sfratio} student-to-faculty</FactBox>
+          <h3 className="University-title">{univData.name}</h3>
+          <FactBox gridArea={'info11'}>
+            {univData.admitrate}% admit rate
+          </FactBox>
+          <FactBox gridArea={'info12'}>
+            {univData.sfratio} student-to-faculty
+          </FactBox>
           <FactBox gridArea={'info13'}>{univData.state}</FactBox>
           <FactBox gridArea={'info21'}>{univData.act} ACT</FactBox>
           <FactBox gridArea={'info22'}>&#36;{univData.price}</FactBox>
-          <FactBox gridArea={'info23'}>&#36;{univData.percaid}</FactBox>
+          <FactBox gridArea={'info23'}>{univData.percaid}%</FactBox>
           <button
             className="Info-expand"
             onClick={() => {
