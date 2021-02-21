@@ -4,7 +4,7 @@ import './DashHeader.css';
 const DashHeader = () => {
   return (
     <div className="DashHeader">
-      <div className="logo">(Some Brand)</div>
+      <div className="logo">Univis</div>
     </div>
   );
 };
