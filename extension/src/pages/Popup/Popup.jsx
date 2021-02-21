@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../assets/img/logo.svg';
 import Greetings from '../../containers/Greetings/Greetings';
 import './Popup.css';
@@ -8,7 +8,29 @@ import FactContainer from '../../containers/FactContainer';
 
 import ComparisonPlot from '../../datavis/ComparisonPlot';
 
+import { getData } from './Dataload.js';
+
 const Popup = () => {
+  const [univName, setUnivName] = useState(null);
+
+  useEffect(() => {
+    getData((emailInfo) => {
+      switch (emailInfo.email) {
+        case 'collegeadmissions@uchicago.edu':
+          setUnivName('University of Chicago');
+          break;
+        case 'admission@case.edu':
+          setUnivName('Case Western Reserve University');
+          break;
+        case 'admissions@mit.edu':
+          setUnivName('Massachusetts Institute of Technology');
+          break;
+      }
+    });
+  }, []);
+
+  console.log(univName);
+
   return (
     <div className="App">
       <header className="App-header">
