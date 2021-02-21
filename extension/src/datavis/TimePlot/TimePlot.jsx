@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { acceptanceRates } from '../../data/csvload.js';
 const Plot = React.lazy(() => import('react-plotly.js'));
 
 const TimePlot = (props) => {
+  const [plotData, setPlotData] = useState([]);
+
   const margins = 16;
   const axesColor = '#fff';
+
+  useEffect(() => {
+    acceptanceRates((years, universities) => {
+      const data = [];
+      for (const [university, series] of Object.entries(universities)) {
+        data.push({
+          x: years,
+          y: series,
+          mode: 'lines',
+          name: university,
+        });
+      }
+      setPlotData(data);
+    });
+  }, []);
 
   return (
     <React.Suspense
@@ -11,22 +29,7 @@ const TimePlot = (props) => {
     >
       <Plot
         className={props.className}
-        data={[
-          {
-            x: props.otherxs,
-            y: props.otherys,
-            type: 'scatter',
-            mode: 'markers',
-            marker: { color: 'blue' },
-          },
-          {
-            x: [props.x],
-            y: [props.y],
-            type: 'scatter',
-            mode: 'markers',
-            marker: { color: 'red' },
-          },
-        ]}
+        data={plotData}
         layout={{
           autosize: true,
           title: {
@@ -42,17 +45,17 @@ const TimePlot = (props) => {
             b: margins + 52,
           },
           yaxis: {
-            title: 'SAT Scores',
+            title: 'Acceptance Rate',
             fixedrange: true,
-            range: [0, 1600],
+            range: [0, 100],
             tickmode: 'linear',
             dtick: 400,
             color: axesColor,
           },
           xaxis: {
-            title: 'Acceptance Rate',
+            title: 'Year',
             fixedrange: true,
-            range: [0, 100],
+            range: [2012, 2020],
             color: axesColor,
           },
           paper_bgcolor: 'rgba(0,0,0,0)',
