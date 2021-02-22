@@ -70,7 +70,7 @@ const Popup = () => {
               });
             }}
           >
-            Gimme info bro
+            Give me more info
           </button>
           <ComparisonPlot
             width={460}
